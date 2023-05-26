@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background-color: aquamarine;
+        font-size: 15px;
+        color: #6c7983;
     }
 `;
 
