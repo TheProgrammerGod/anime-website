@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
 import { useGlobalContext } from '../Context/global';
+import Airing from './Airing';
 import Popular from './Popular'
+import Upcoming from './Upcoming';
 
 function Homepage() {
 
   const { search, searchAnime, handleChange, handleSubmit,
-    getPopuplarAnime, getUpcomingAnime, getAiringAnime } = useGlobalContext();
+    getPopuplarAnime, getUpcomingAnime, getAiringAnime, isSearch,searchResults } = useGlobalContext();
 
   const [rendered, setRendered] = React.useState('popular');
 
@@ -14,6 +16,10 @@ function Homepage() {
     switch (rendered) {
       case 'popular':
         return <Popular rendered={rendered} />
+      case 'upcoming':
+        return <Upcoming rendered={rendered}/>
+      case 'airing':
+        return <Airing rendered={rendered}/>
       default:
         return <Popular rendered={rendered} />
     }
@@ -35,12 +41,16 @@ function Homepage() {
               setRendered('popular');
             }}>Popular</button>
           </div>
-          <form action="" className='search-form'>
+          <form action="" className='search-form' onSubmit={handleSubmit}>
             <div className='input-control'>
               <input type="text" placeholder="Search Anime" value={search} onChange={handleChange} />
-              <button type='submit' onClick={handleSubmit}>Submit</button>
+              <button type='submit'>Submit</button>
             </div>
+            <div className='search-results'>
+            {isSearch?(searchResults.length>0?searchResults.length+" Results found": "No results found"):""}
+          </div>
           </form>
+
           <div className='fiter-btn airing-filter'>
             <button onClick={() => {
               setRendered('airing');
@@ -94,6 +104,7 @@ const HomepageStyled = styled.div`
           width: 100%;
           .input-control {
             position: relative;
+
             button{
               position: absolute;
               right: 0;
@@ -110,6 +121,10 @@ const HomepageStyled = styled.div`
             border: 5px solid #e5e7eb;
             background-color: white;
             font: 17px;
+          }
+          .search-results{
+            margin-top: 5px;
+            text-align: center;
           }
         }
       }
