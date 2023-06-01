@@ -10,6 +10,7 @@ const SEARCH = "SEARCH";
 const GET_POPULAR_ANIME = "GET_POPULAR_ANIME";
 const GET_UPCOMING_ANIME = "GET_UPCOMING_ANIME";
 const GET_AIRING_ANIME = "GET_AIRING_ANIME";
+const GET_CHARACTER_PICTURES = "GET_CHARACTER_PICTURES";
 
 
 const reducer = (state,action) => {
@@ -25,6 +26,8 @@ const reducer = (state,action) => {
             return {...state, loading: false, upcomingAnime: action.payload};
         case GET_AIRING_ANIME:
             return {...state, loading: false, airingAnime: action.payload};
+        case GET_CHARACTER_PICTURES:
+            return {...state, loading: false, pictures: action.payload};
         default:
             return state;
     }
@@ -97,6 +100,15 @@ export const GlobalContextProvider = ({ children }) => {
         dispatch({type: SEARCH, payload: data.data});
     };
 
+    //fetch character pictures
+
+    const getCharacterPictures = async (id) => {
+        dispatch({type:LOADING});
+        const response = await fetch(`${baseUrl}/characters/${id}/pictures`);
+        const data = await response.json();
+        dispatch({type: GET_CHARACTER_PICTURES, payload: data.data});
+    };
+
     React.useEffect(() => {
         getPopularAnime()
     },[]);
@@ -110,7 +122,8 @@ export const GlobalContextProvider = ({ children }) => {
             searchAnime,
             getAiringAnime,
             getPopularAnime,
-            getUpcomingAnime
+            getUpcomingAnime,
+            getCharacterPictures
         }}>
             {children}
         </GlobalContext.Provider>
