@@ -32,7 +32,7 @@ function AnimeItem() {
     useEffect(() => {
         getAnime(id);
         getCharacters(id);
-    }, []);
+    }, [id]);
 
 
     return (

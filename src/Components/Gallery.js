@@ -17,6 +17,7 @@ function Gallery() {
 
   React.useEffect(() => {
     getCharacterPictures(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
 
