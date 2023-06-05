@@ -12,7 +12,7 @@ function AnimeItem() {
     const [showMore, setShowMore] = useState(false);
 
     //destructing anime
-    const { title_english, synopsis, images, status, duration, aired, season, rank, score, scored_by, popularity, rating, source } = anime;
+    const { title_english, synopsis, images, trailer, status, duration, aired, season, rank, score, scored_by, popularity, rating, source } = anime;
 
 
     //fetching anime data
@@ -65,15 +65,15 @@ function AnimeItem() {
             </div>
             <h3 className='title'>Trailer</h3>
             <div className='trailer-con'>
-                    {trailer?.embed_url && 
-                    <iframe 
-                    src={trailer?.embed_url}
-                    width="800"
-                    height="450"
-                    allowFullScreen
-                    allow='encrpyted-media picture-in-picture fullscreen' 
+                {trailer?.embed_url &&
+                    <iframe
+                        src={trailer?.embed_url}
+                        width="800"
+                        height="450"
+                        allowFullScreen
+                        allow='encrpyted-media picture-in-picture fullscreen'
                     ></iframe>}
-                </div>
+            </div>
             <h3 className='title'>Characters</h3>
             <div className='characters'>
                 {characters?.map((character, index) => {
