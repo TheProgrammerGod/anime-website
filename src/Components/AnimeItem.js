@@ -64,7 +64,7 @@ function AnimeItem() {
                 </p>
             </div>
             <h3 className='title'>Trailer</h3>
-            {/* <div className='trailer-con'>
+            <div className='trailer-con'>
                     {trailer?.embed_url && 
                     <iframe 
                     src={trailer?.embed_url}
@@ -73,7 +73,7 @@ function AnimeItem() {
                     allowFullScreen
                     allow='encrpyted-media picture-in-picture fullscreen' 
                     ></iframe>}
-                </div> */}
+                </div>
             <h3 className='title'>Characters</h3>
             <div className='characters'>
                 {characters?.map((character, index) => {
