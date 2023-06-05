@@ -12,7 +12,7 @@ function AnimeItem() {
     const [showMore, setShowMore] = useState(false);
 
     //destructing anime
-    const { title, synopsis, images, status, trailer, duration, aired, season, rank, score, scored_by, popularity, rating, source } = anime;
+    const { title_english, synopsis, images, status, trailer, duration, aired, season, rank, score, scored_by, popularity, rating, source } = anime;
 
 
     //fetching anime data
@@ -37,7 +37,7 @@ function AnimeItem() {
 
     return (
         <AnimeItemStyled>
-            <h1>{title}</h1>
+            <h1>{title_english}</h1>
             <div className='details'>
                 <div className='detail'>
                     <div className='image'>
@@ -83,7 +83,7 @@ function AnimeItem() {
                         <Link to={`/character/${mal_id}`} key={index}>
                             <div className='character'>
                             <img src={images?.jpg.image_url} alt='' />
-                            <h4>{name}</h4>
+                            <h3>{name}</h3>
                             <p>{role}</p>
                             </div>
                         </Link>
@@ -97,22 +97,18 @@ function AnimeItem() {
 
 
 const AnimeItemStyled = styled.div`
-    background-color: #EDEDED;
+    background-color: #33353c;
     padding: 20px 150px;
-
+    color: #cae962;
     h1{
         margin-bottom: 17px;
-        font-size: 34px;
+        font-size: 40px;
         font-weight: bold;
-        background-image: linear-gradient(to right, #00FF00, #32CD32);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: white;
         cursor: default;
     }
 
     .title{
-        color: black;
         margin: 34px 0px;
         font-size: 25px;
         cursor: default;
@@ -120,7 +116,7 @@ const AnimeItemStyled = styled.div`
 
     .description{
         margin: 25px 0px;
-        color: #6c7983;
+        color: white;
         line-height: 30px;
 
         button {
@@ -129,16 +125,17 @@ const AnimeItemStyled = styled.div`
             outline: none;
             cursor: pointer;
             font-size: 15px;
-            color: #27AE60;
+            color: #cae962;
             font-weight: bold;
         }
     }
 
     .details{
-        background-color: white;
+        background-color: #202125   ;
         border-radius: 20px;
         padding: 25px;
-        border: 5px solid #e5e7eb;
+        border: 5px solid #33353c;
+        color: white;
         .detail{
             display: flex;
             justify-content: space-evenly;
@@ -158,7 +155,7 @@ const AnimeItemStyled = styled.div`
 
             p span:first-child{
                 font-weight: bold;
-                color: #454e56;
+                color: #cae962;
             }
         }
     }
@@ -169,34 +166,35 @@ const AnimeItemStyled = styled.div`
         justify-content: center;
         iframe{
             outline: none;
-            border: 5px solid #e5e7eb;
+            border: 5px solid #33353c;
             border-radius: 10px;
-            background-color: white;
+            background-color: #202125;
             padding: 17px;
         }
     }
 
     .characters{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        background: white;
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
+        grid-gap: 25px;
+        background: #202125;
         padding: 25px;
         border-radius: 20px;
-        border: 5px solid #e5e7eb;
+        border: 5px solid #33353c;
         .character{
             padding: 5px 7px;
             border-radius: 7px;
-            background-color: #EDEDED;
+            background-color: #33353c;
             img{
                 width: 100%;
             }
-            h4{
+            h3{
                 padding: 5px 0;
-                color: #454e56;
+                color: white;
             }
             p{
-                color: #27AE60;
+                font-size: 14px;
+                color: #cae962;
             }
             &:hover{
                 transform: translateY(-5px);

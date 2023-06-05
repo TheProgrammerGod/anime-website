@@ -110,7 +110,7 @@ export const GlobalContextProvider = ({ children }) => {
     };
 
     React.useEffect(() => {
-        getPopularAnime()
+        getAiringAnime();
     },[]);
 
     return (

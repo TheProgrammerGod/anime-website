@@ -2,20 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../Context/global'
 import styled from 'styled-components'
+import Sidebar from './Sidebar';
 
 function Airing({ rendered }) {
     const { airingAnime, isSearch, searchResults } = useGlobalContext();
 
     const conditionalRender = () => {
         if (!isSearch && rendered === 'airing') {
-            return airingAnime.map((anime) => {
+            return airingAnime?.map((anime) => {
                 return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
                     <img src={anime.images.jpg.large_image_url} alt="Couldn't load" />
                 </Link>
             });
         }
         else {
-            return searchResults.map((anime) => {
+            return searchResults?.map((anime) => {
                 return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
                     <img src={anime.images.jpg.large_image_url} alt="Couldn't load" />
                 </Link>
@@ -27,11 +28,13 @@ function Airing({ rendered }) {
             <div className='airing-anime'>
                 {conditionalRender()}
             </div>
+            <Sidebar/>
         </AiringStyled>
     )
 }
 
 const AiringStyled = styled.div`
+    display: flex;
     .airing-anime{
         padding-right: 0px;
         padding-top: 35px;
@@ -39,19 +42,17 @@ const AiringStyled = styled.div`
         padding-left: 15px;
         margin-top: 35px;
         width: 100%;
-        background-color: white;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        background-color: #33353c;
+        border-top: 5px solid #33353c;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 25px;
     }
 
     .airing-anime a{
-        margin-top: 7px;
-        width: 300px;
         height: 500px;
         border-radius: 7px;
-        border: 5px solid #e5e7eb;
-
+        border-top: 5px solid #33353c;
     }
 
     img{

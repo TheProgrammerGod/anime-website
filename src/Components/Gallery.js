@@ -37,7 +37,7 @@ function Gallery() {
             <img 
             src={picture.jpg.image_url} 
             style={{
-              border: i == index ? "3px solid #27AE60" : "3px solid #e5e7eb",
+              border: i == index ? "3px solid #cae962" : "3px solid #202125",
               filter: i== index ? "grayscale(0)" : "grayscale(60%)",
               transform: i == index ? "scale(1.1)" : "scale(1)"
             }}
@@ -50,7 +50,7 @@ function Gallery() {
 }
 
 const GalleryStyled = styled.div`
-    background-color: #EDEDED;
+    background-color: #33353c;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +61,7 @@ const GalleryStyled = styled.div`
       top: 30px;
       left: 15px;
       a{
-        color: #EB5757;
+        color: #cae962;
         text-decoration: none;
         font-weight: bold;
         display: flex;
@@ -70,10 +70,10 @@ const GalleryStyled = styled.div`
     }
 
     .big-image{
-      background-color: white;
+      background-color: #202125;
       padding: 25px;
       margin: 15px 0;
-      border: 5px solid #e5e7eb;
+      border: 5px solid #33353c;
       border-radius: 7px;
       img{
         width: 350px;
@@ -83,21 +83,21 @@ const GalleryStyled = styled.div`
     }
 
     .small-images{
-      background-color: white;
+      background-color: #202125;
       display: flex;
       flex-wrap: wrap;
       gap: 11px;
       width: 80%;
       padding: 30px;
       border-radius: 7px;
-      border: 5px solid #e5e7eb;
+      border: 5px solid #33353c;
       margin-bottom: 7px;
       img{
         width: 90px;
         height: 90px;
         object-fit: cover;
         border-radius: 7px;
-        border: 5px solid #e5e7eb;
+        border: 5px solid #202125;
         cursor: pointer;
       }
     }

@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../Context/global';
 import Airing from './Airing';
 import Popular from './Popular'
+import Sidebar from './Sidebar';
 import Upcoming from './Upcoming';
 
 function Homepage() {
 
   const { search, searchAnime, handleChange, handleSubmit,
-    getPopuplarAnime, getUpcomingAnime, getAiringAnime, isSearch,searchResults } = useGlobalContext();
+    getPopularAnime, getUpcomingAnime, getAiringAnime, isSearch,searchResults } = useGlobalContext();
 
-  const [rendered, setRendered] = React.useState('popular');
+  const [rendered, setRendered] = React.useState('airing');
 
   const switchComponent = () => {
     switch (rendered) {
@@ -39,12 +40,13 @@ function Homepage() {
           <div className='fiter-btn popular-filter'>
             <button onClick={() => {
               setRendered('popular');
-            }}>Popular</button>
+              getPopularAnime();
+            }}><i className='fas fa-fire'></i>Popular</button>
           </div>
           <form action="" className='search-form' onSubmit={handleSubmit}>
             <div className='input-control'>
               <input type="text" placeholder="Search Anime" value={search} onChange={handleChange} />
-              <button type='submit'>Submit</button>
+              <button type='submit'><i className="fa-sharp fa-solid fa-magnifying-glass"></i></button>
             </div>
             <div className='search-results'>
             {isSearch?(searchResults.length>0?searchResults.length+" Results found": "No results found"):""}
@@ -54,7 +56,6 @@ function Homepage() {
           <div className='fiter-btn airing-filter'>
             <button onClick={() => {
               setRendered('airing');
-              getAiringAnime();
             }}>Airing</button>
           </div>
           <div className='fiter-btn upcoming-filter'>
@@ -71,10 +72,12 @@ function Homepage() {
 }
 
 const HomepageStyled = styled.div`
-    background-color: #EDEDED;
+    background-color: #202125;
+
     header{
       padding: 10px 55px;
       width: 60%;
+      color: #ccc;
       margin: 0px auto;
       .logo{
         display: flex;
@@ -95,10 +98,13 @@ const HomepageStyled = styled.div`
           outline: none;
           border-radius: 30px;
           background-color: white;
-          font-size: 14px;
+          font-size: 16px;
+          font-weight: 300px;
           font-family: inherit;
           cursor: pointer;
-          border: 5px solid #e5e7eb;
+          border: 5px solid #202125;
+          gap: 8px;
+          background-color: #cae962;
         }
         form{
           width: 100%;
@@ -118,9 +124,10 @@ const HomepageStyled = styled.div`
             border: none;
             outline: none;
             border-radius: 30px;
-            border: 5px solid #e5e7eb;
+            border: 3px solid #202125;
             background-color: white;
-            font: 17px;
+            font-size: 17px;
+            color: #495057;
           }
           .search-results{
             margin-top: 5px;
