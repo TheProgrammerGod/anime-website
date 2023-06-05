@@ -12,7 +12,7 @@ function AnimeItem() {
     const [showMore, setShowMore] = useState(false);
 
     //destructing anime
-    const { title_english, synopsis, images, status, trailer, duration, aired, season, rank, score, scored_by, popularity, rating, source } = anime;
+    const { title_english, synopsis, images, status, duration, aired, season, rank, score, scored_by, popularity, rating, source } = anime;
 
 
     //fetching anime data
@@ -77,14 +77,14 @@ function AnimeItem() {
             <h3 className='title'>Characters</h3>
             <div className='characters'>
                 {characters?.map((character, index) => {
-                    const {role} = character
-                    const {images, name, mal_id} = character.character;
-                    return(
+                    const { role } = character
+                    const { images, name, mal_id } = character.character;
+                    return (
                         <Link to={`/character/${mal_id}`} key={index}>
                             <div className='character'>
-                            <img src={images?.jpg.image_url} alt='' />
-                            <h3>{name}</h3>
-                            <p>{role}</p>
+                                <img src={images?.jpg.image_url} alt='' />
+                                <h3>{name}</h3>
+                                <p>{role}</p>
                             </div>
                         </Link>
                     );

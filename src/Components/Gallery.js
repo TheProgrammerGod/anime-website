@@ -33,15 +33,15 @@ function Gallery() {
       </div>
       <div className='small-images'>
         {pictures?.map((picture, i) => {
-          return <div className='image-con' onClick={() => {handleImageClick(i)}} key={i}>
-            <img 
-            src={picture.jpg.image_url} 
-            style={{
-              border: i == index ? "3px solid #cae962" : "3px solid #202125",
-              filter: i== index ? "grayscale(0)" : "grayscale(60%)",
-              transform: i == index ? "scale(1.1)" : "scale(1)"
-            }}
-            alt="Could'n load"/>
+          return <div className='image-con' onClick={() => { handleImageClick(i) }} key={i}>
+            <img
+              src={picture.jpg.image_url}
+              style={{
+                border: i === index ? "3px solid #cae962" : "3px solid #202125",
+                filter: i === index ? "grayscale(0)" : "grayscale(60%)",
+                transform: i === index ? "scale(1.1)" : "scale(1)"
+              }}
+              alt="Could'n load" />
           </div>
         })}
       </div>

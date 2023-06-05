@@ -5,24 +5,24 @@ import { Link } from 'react-router-dom'
 
 function Sidebar() {
 
-    const {airingAnime} = useGlobalContext();
+    const { airingAnime } = useGlobalContext();
 
-    const sorted = airingAnime?.sort((a,b) => {
+    const sorted = airingAnime?.sort((a, b) => {
         return b.score - a.score;
     })
-  return (
-    <SidebarStyled>
-        <h3>Top 5 Popular</h3>
-        <div className='anime'>
-        {sorted?.slice(0,5).map((anime) => {
-            return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
-                <img src={anime.images.jpg.large_image_url} alt="Couldn't Load"/>
-                <h4>{anime.title_english}</h4>
-            </Link>
-        })}
-        </div>
-    </SidebarStyled>
-  )
+    return (
+        <SidebarStyled>
+            <h3>Top 5 Popular</h3>
+            <div className='anime'>
+                {sorted?.slice(0, 5).map((anime) => {
+                    return <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
+                        <img src={anime.images.jpg.large_image_url} alt="Couldn't Load" />
+                        <h4>{anime.title_english}</h4>
+                    </Link>
+                })}
+            </div>
+        </SidebarStyled>
+    )
 }
 
 const SidebarStyled = styled.div`

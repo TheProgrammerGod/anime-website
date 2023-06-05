@@ -28,7 +28,7 @@ function Airing({ rendered }) {
             <div className='airing-anime'>
                 {conditionalRender()}
             </div>
-            <Sidebar/>
+            <Sidebar />
         </AiringStyled>
     )
 }

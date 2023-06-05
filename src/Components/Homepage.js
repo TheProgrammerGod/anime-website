@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import { useGlobalContext } from '../Context/global';
 import Airing from './Airing';
 import Popular from './Popular'
-import Sidebar from './Sidebar';
 import Upcoming from './Upcoming';
 
 function Homepage() {
 
-  const { search, searchAnime, handleChange, handleSubmit,
-    getPopularAnime, getUpcomingAnime, getAiringAnime, isSearch,searchResults } = useGlobalContext();
+  const { search, handleChange, handleSubmit,
+    getPopularAnime, getUpcomingAnime, isSearch, searchResults } = useGlobalContext();
 
   const [rendered, setRendered] = React.useState('airing');
 
@@ -18,9 +17,9 @@ function Homepage() {
       case 'popular':
         return <Popular rendered={rendered} />
       case 'upcoming':
-        return <Upcoming rendered={rendered}/>
+        return <Upcoming rendered={rendered} />
       case 'airing':
-        return <Airing rendered={rendered}/>
+        return <Airing rendered={rendered} />
       default:
         return <Popular rendered={rendered} />
     }
@@ -49,8 +48,8 @@ function Homepage() {
               <button type='submit'><i className="fa-sharp fa-solid fa-magnifying-glass"></i></button>
             </div>
             <div className='search-results'>
-            {isSearch?(searchResults.length>0?searchResults.length+" Results found": "No results found"):""}
-          </div>
+              {isSearch ? (searchResults.length > 0 ? searchResults.length + " Results found" : "No results found") : ""}
+            </div>
           </form>
 
           <div className='fiter-btn airing-filter'>

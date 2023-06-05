@@ -28,7 +28,7 @@ function Upcoming({ rendered }) {
             <div className='upcoming-anime'>
                 {conditionalRender()}
             </div>
-            <Sidebar/>
+            <Sidebar />
         </UpcomingStyled>
     )
 }
