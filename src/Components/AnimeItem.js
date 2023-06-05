@@ -72,6 +72,7 @@ function AnimeItem() {
                         height="450"
                         allowFullScreen
                         allow='encrpyted-media picture-in-picture fullscreen'
+                        title='Anime trailer'
                     ></iframe>}
             </div>
             <h3 className='title'>Characters</h3>
